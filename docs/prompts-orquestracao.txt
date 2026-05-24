@@ -17,6 +17,27 @@ prompt › leia o arquivo docs\descricao-projeto-avaliativo.md produza um plano 
 
 prompt > crie o readme do projeto e o contributing
 
+prompt > Contexto:
+Estou desenvolvendo o AgendaEdu, uma web app de agenda escolar para o projeto avaliativo de IA para Desenvolvedores. O repositorio deve seguir Gitflow, usar Pull Requests para integrar em develop, manter commits semanticos e documentar o uso de IA em todas as etapas.
+
+Tarefa:
+Analise a estrutura inicial do repositorio e proponha uma organizacao de pastas para frontend React + Vite, backend FastAPI, testes, documentacao, prompts, diagramas e pipeline CI/CD.
+
+Restricoes:
+- Nao misture escopos diferentes na mesma branch.
+- Use nomes de pastas claros.
+- Inclua docs/prompts para os prompts.
+- Inclua docs/diagrams para diagramas Mermaid.
+- Inclua .env.example sem chaves reais.
+
+Formato de resposta:
+1. Estrutura de pastas sugerida.
+2. Justificativa de cada pasta.
+3. Checklist de arquivos iniciais.
+4. Branch e commit semantico sugeridos.
+
+prompt > continue
+
 prompt › com base nas exigencias me de sugestões que e possa implementar para atender os requisitos o prazo de entrega é 1 semana, considerando que  
   só tenho aulas segundas, terças e quintas.
 

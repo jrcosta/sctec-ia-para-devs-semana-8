@@ -1,0 +1,12 @@
+{
+  "prioridades": [
+    {
+      "titulo": "Prova de matematica",
+      "motivo": "prioridade alta, prazo proximo e status pendente"
+    },
+    {
+      "titulo": "Leitura de historia",
+      "motivo": "prioridade baixa e prazo menos urgente"
+    }
+  ]
+}
