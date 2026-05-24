@@ -28,12 +28,24 @@ Formato de resposta:
 
 ## Saida obtida
 
-Preencher durante a execucao.
+A arquitetura foi documentada em `docs/arquitetura-agendaedu.md`, com:
+
+- decisoes arquiteturais;
+- responsabilidades por camada;
+- diagrama Mermaid de arquitetura geral;
+- diagrama Mermaid do fluxo de priorizacao;
+- riscos e mitigacoes;
+- proximos passos.
+
+Os diagramas foram atualizados em:
+
+- `docs/diagrams/arquitetura-agendaedu.mmd`;
+- `docs/diagrams/fluxo-priorizacao.mmd`.
 
 ## Avaliacao critica
 
-Preencher durante a execucao.
+A proposta atende ao escopo avaliativo e mantem a regra de negocio no backend. A principal decisao ainda pendente e a formula numerica final de pontuacao do plano de prioridades. Essa decisao deve ser fechada na implementacao do backend e validada por testes.
 
 ## Ajustes aplicados
 
-Preencher durante a execucao.
+Foram adicionadas responsabilidades separadas para frontend, backend, servicos de dominio, repositorio, testes e CI/CD. Os diagramas foram refinados para mostrar explicitamente API JSON, Pydantic, motor de priorizacao, armazenamento simples, OpenAPI, Pytest, GitHub Actions e documentacao.

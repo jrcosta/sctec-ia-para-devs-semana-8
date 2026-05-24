@@ -1,15 +1,18 @@
 flowchart LR
-    Usuario[Usuario] --> Frontend[Frontend React + Vite]
-    Frontend --> API[Backend FastAPI]
-    API --> Service[Servico de compromissos]
-    Service --> Prioridade[Motor de priorizacao]
-    Service --> Storage[(Memoria ou JSON)]
+    User[Usuario] --> UI[Frontend React + Vite]
 
-    API --> Swagger[OpenAPI / Swagger]
+    UI -->|HTTP JSON| API[Backend FastAPI]
+    API --> Schemas[Pydantic Schemas]
+    API --> Routes[Rotas da API]
+    Routes --> Services[Servicos de Dominio]
+    Services --> Priority[Motor de Priorizacao]
+    Services --> Repository[Repositorio de Compromissos]
+    Repository --> Storage[(Memoria / JSON simples)]
+
+    API --> OpenAPI[Swagger OpenAPI /docs]
     Tests[Pytest] --> API
     CI[GitHub Actions] --> Tests
-    CI --> BuildFrontend[Build frontend]
-    CI --> LintBackend[Lint backend]
+    CI --> Build[Build React + Vite]
 
-    Prompts[docs/prompts] --> README[README]
-    Diagrams[docs/diagrams] --> README
+    Prompts[docs/prompts] --> Docs[Documentacao do Projeto]
+    Diagrams[docs/diagrams] --> Docs
