@@ -4,6 +4,12 @@ prompt > crie uma branch main, uma develop
 
 prompt > crie um arquivo agents.md a primeira regra dele é que qualquer alteração que produza artefato deve ser mergeada via pr na develop, não podendo ter várias alterações de escopos diferentes num mesmo commit/pr
 
+prompt > adicione a ela a regra que deve ser utilizado gitflow e commits semanticos sempre.
+
+prompt > crie um modelo de pull request para o github
+
+prompt > faça pr das mudanças da develop para a main
+
 prompt › leia o arquivo docs\descricao-projeto-avaliativo.md produza um plano em etapas para a execução desse projeto avaliativo, e também produza   
   prompts para cada etapa, salve eles na pasta /prompts, o plano deve incluir a criação de diagramas em mmd, bem como issues para controle    
   via board no github, tudo precisara ser documentado e seguir as exigencias do documento mencionado, caso algo não esteja claro, faça um     
