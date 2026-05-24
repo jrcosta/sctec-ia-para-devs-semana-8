@@ -40,6 +40,8 @@ prompt > continue
 
 prompt > crie um script que rode para eu só acessar o front
 
+prompt > crie esse script tb para linux
+
 prompt › com base nas exigencias me de sugestões que e possa implementar para atender os requisitos o prazo de entrega é 1 semana, considerando que  
   só tenho aulas segundas, terças e quintas.
 

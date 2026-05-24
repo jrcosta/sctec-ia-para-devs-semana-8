@@ -112,11 +112,20 @@ Para subir backend e frontend juntos no Windows:
 .\scripts\dev.ps1
 ```
 
+Para Linux/macOS:
+
+```bash
+chmod +x scripts/dev.sh
+./scripts/dev.sh
+```
+
 Depois acesse:
 
 ```text
 http://127.0.0.1:5173
 ```
+
+Os logs locais ficam em `.logs/` caso algum processo encerre.
 
 As instrucoes manuais abaixo podem ser usadas caso prefira rodar cada parte separadamente.
 
