@@ -118,6 +118,8 @@ Depois acesse:
 http://127.0.0.1:5173
 ```
 
+Os logs locais ficam em `.logs/` caso algum processo encerre.
+
 As instrucoes manuais abaixo podem ser usadas caso prefira rodar cada parte separadamente.
 
 Backend previsto:
