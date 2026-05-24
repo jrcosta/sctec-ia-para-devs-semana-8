@@ -26,12 +26,28 @@ Formato de resposta:
 
 ## Saida obtida
 
-Preencher durante a execucao.
+A especificacao funcional foi registrada em `docs/especificacao-funcional-agendaedu.md`, cobrindo:
+
+- problema resolvido;
+- usuarios-alvo;
+- funcionalidades principais;
+- regras de negocio;
+- validacoes;
+- exemplos de entrada;
+- exemplos de saida;
+- criterios de aceite.
 
 ## Avaliacao critica
 
-Preencher durante a execucao.
+A resposta inicial do prompt descreve bem o escopo funcional, mas ainda nao define uma formula numerica fechada para o calculo de prioridade. Essa decisao foi deixada para a etapa de implementacao do backend, onde os pesos de prioridade, prazo, tipo e status poderao ser codificados e testados.
 
 ## Ajustes aplicados
 
-Preencher durante a execucao.
+Foram adicionados exemplos mais estruturados de:
+
+- filtro por status;
+- filtro por disciplina e tipo;
+- resposta paginavel/listavel com `items` e `total`;
+- plano de prioridades com `pontuacao` e `motivo`.
+
+A especificacao tambem foi vinculada a issue de referencia `2. Definir dominio e escopo do AgendaEdu` e a branch indicada `docs/especificacao-agendaedu`.
