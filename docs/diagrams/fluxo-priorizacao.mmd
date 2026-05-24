@@ -1,9 +1,14 @@
 flowchart TD
-    A[Receber compromissos] --> B[Ignorar concluidos ou reduzir peso]
-    B --> C[Avaliar prioridade informada]
-    C --> D[Avaliar proximidade do prazo]
-    D --> E[Avaliar tipo do compromisso]
-    E --> F[Calcular pontuacao]
-    F --> G[Ordenar por maior urgencia]
-    G --> H[Gerar plano de prioridades]
-    H --> I[Retornar JSON e exibir no frontend]
+    Start[Receber compromissos cadastrados] --> Validate[Validar dados de entrada]
+    Validate --> FilterDone{Status concluido?}
+    FilterDone -->|Sim| LowWeight[Aplicar menor peso ou mover para o final]
+    FilterDone -->|Nao| PriorityWeight[Calcular peso da prioridade]
+
+    LowWeight --> TypeWeight[Calcular peso do tipo]
+    PriorityWeight --> DeadlineWeight[Calcular peso por proximidade do prazo]
+    DeadlineWeight --> TypeWeight
+    TypeWeight --> StatusWeight[Calcular peso do status]
+    StatusWeight --> Score[Somar pontuacao final]
+    Score --> Reason[Gerar motivo da priorizacao]
+    Reason --> Sort[Ordenar por maior pontuacao]
+    Sort --> Response[Retornar plano de prioridades em JSON]
