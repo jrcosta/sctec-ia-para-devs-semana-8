@@ -106,7 +106,19 @@ Os prompts ficam em `docs/prompts/` e devem registrar contexto, tarefa, restrico
 
 ## Execucao Local
 
-As instrucoes abaixo serao consolidadas quando o backend e o frontend forem implementados.
+Para subir backend e frontend juntos no Windows:
+
+```powershell
+.\scripts\dev.ps1
+```
+
+Depois acesse:
+
+```text
+http://127.0.0.1:5173
+```
+
+As instrucoes manuais abaixo podem ser usadas caso prefira rodar cada parte separadamente.
 
 Backend previsto:
 
