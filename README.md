@@ -112,6 +112,13 @@ Para subir backend e frontend juntos no Windows:
 .\scripts\dev.ps1
 ```
 
+Para Linux/macOS:
+
+```bash
+chmod +x scripts/dev.sh
+./scripts/dev.sh
+```
+
 Depois acesse:
 
 ```text
