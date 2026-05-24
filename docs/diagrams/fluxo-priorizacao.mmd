@@ -1,0 +1,9 @@
+flowchart TD
+    A[Receber compromissos] --> B[Ignorar concluidos ou reduzir peso]
+    B --> C[Avaliar prioridade informada]
+    C --> D[Avaliar proximidade do prazo]
+    D --> E[Avaliar tipo do compromisso]
+    E --> F[Calcular pontuacao]
+    F --> G[Ordenar por maior urgencia]
+    G --> H[Gerar plano de prioridades]
+    H --> I[Retornar JSON e exibir no frontend]
