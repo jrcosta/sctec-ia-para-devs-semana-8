@@ -15,6 +15,8 @@ prompt › leia o arquivo docs\descricao-projeto-avaliativo.md produza um plano 
   via board no github, tudo precisara ser documentado e seguir as exigencias do documento mencionado, caso algo não esteja claro, faça um     
   questionario antes da execução.
 
+prompt > o arquivo docs\questionario-decisoes-iniciais.md responde todas as perguntas necessárias para criação do plano.
+
 prompt › com base nas exigencias me de sugestões que e possa implementar para atender os requisitos o prazo de entrega é 1 semana, considerando que  
   só tenho aulas segundas, terças e quintas.
 
