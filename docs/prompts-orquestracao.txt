@@ -1,0 +1,27 @@
+prompt > inicialize essa pasta com o repositório https://github.com/jrcosta/sctec-ia-para-devs-semana-8.git
+
+prompt > crie uma branch main, uma develop
+
+prompt > crie um arquivo agents.md a primeira regra dele é que qualquer alteração que produza artefato deve ser mergeada via pr na develop, não podendo ter várias alterações de escopos diferentes num mesmo commit/pr
+
+prompt › leia o arquivo docs\descricao-projeto-avaliativo.md produza um plano em etapas para a execução desse projeto avaliativo, e também produza   
+  prompts para cada etapa, salve eles na pasta /prompts, o plano deve incluir a criação de diagramas em mmd, bem como issues para controle    
+  via board no github, tudo precisara ser documentado e seguir as exigencias do documento mencionado, caso algo não esteja claro, faça um     
+  questionario antes da execução.
+
+prompt › com base nas exigencias me de sugestões que e possa implementar para atender os requisitos o prazo de entrega é 1 semana, considerando que  
+  só tenho aulas segundas, terças e quintas.
+
+
+>>> prompts intermediarios de refinamento, direcionando a decisão exemplo: "quero algo na area da educação" <<<
+
+  
+prompt > documente essa sugestão na pasta docs e edite os prompts com base nela.
+
+
+>>> uso do prompt 1 gerado pela ia <<<
+
+
+prompt de refinamento: "› me de esse questionario dentro de /docs/arquitetura/decisoes"
+
+prompt › as respostas estão todas no docs\arquitetura\decisoes\questionario-decisoes-iniciais.md e agora qual proximo passo?
