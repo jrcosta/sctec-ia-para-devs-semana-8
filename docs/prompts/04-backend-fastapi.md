@@ -48,12 +48,25 @@ Formato de resposta:
 
 ## Saida obtida
 
-Preencher durante a execucao.
+A implementacao inicial do backend foi registrada com:
+
+- modelos Pydantic;
+- endpoints de cadastro, listagem, consulta por ID e plano de prioridades;
+- armazenamento em memória;
+- serviço separado para filtros e priorização;
+- testes de backend cobrindo criação, filtros, prioridade e validação.
 
 ## Avaliacao critica
 
-Preencher durante a execucao.
+A estrutura atende bem ao escopo mínimo e mantém a regra de negócio separada das rotas. Os pontos que ainda pedem refinamento são a persistência real dos dados, a calibragem fina dos pesos de priorização e uma suíte de testes mais ampla para combinações de filtros e bordas de data.
 
 ## Ajustes aplicados
 
-Preencher durante a execucao.
+Os seguintes ajustes foram feitos em relação ao prompt inicial:
+
+- adição de `GET /appointments/{appointment_id}`;
+- resposta de listagem estruturada com `items` e `total`;
+- `GET /appointments/priority-plan` retornando itens com `pontuacao` e `motivo`;
+- validação de texto com remoção de espaços em branco;
+- repositório em memória com `clear()` para testes;
+- testes automatizados para fluxo principal.
