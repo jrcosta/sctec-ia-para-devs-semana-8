@@ -1,15 +1,9 @@
 flowchart LR
-    Usuario[Usuario] --> Frontend[Frontend React + Vite]
-    Frontend --> API[Backend FastAPI]
-    API --> Service[Servico de compromissos]
-    Service --> Prioridade[Motor de priorizacao]
-    Service --> Storage[(Memoria ou JSON)]
-
-    API --> Swagger[OpenAPI / Swagger]
-    Tests[Pytest] --> API
-    CI[GitHub Actions] --> Tests
-    CI --> BuildFrontend[Build frontend]
-    CI --> LintBackend[Lint backend]
-
-    Prompts[docs/prompts] --> README[README]
-    Diagrams[docs/diagrams] --> README
+    User[Usuario] --> Page[Next.js App Router]
+    Page --> UI[React Client Components]
+    UI --> API[Route Handlers /api]
+    API --> Domain[Dominio AgendaEdu]
+    Domain --> Store[(Memoria do runtime)]
+    Domain --> Priority[Priorizacao]
+    API --> JSON[JSON]
+    JSON --> UI

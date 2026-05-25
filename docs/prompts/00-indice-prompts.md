@@ -1,24 +1,12 @@
-# Indice de prompts do AgendaEdu
+# Indice de prompts
 
-Os prompts desta pasta devem ser usados e atualizados durante o desenvolvimento. Cada arquivo registra uma etapa do ciclo de vida do projeto e deve ter, quando aplicavel:
+Prompts vigentes:
 
-- contexto;
-- tarefa;
-- restricoes;
-- formato de resposta esperado;
-- saida obtida;
-- avaliacao critica;
-- ajustes aplicados.
+- `00-indice-prompts-serverless.md`
+- `01-migracao-serverless-nextjs.md`
+- `04-backend-serverless-nextjs.md`
+- `07-testes-route-handlers-nextjs.md`
 
-## Prompts por etapa
+Prompts anteriores arquivados:
 
-- `01-organizacao-repositorio.md`
-- `02-especificacao-funcional.md`
-- `03-arquitetura-diagramas.md`
-- `04-backend-fastapi.md`
-- `05-frontend-react-vite.md`
-- `06-refatoracao-ia.md`
-- `07-testes-pytest.md`
-- `08-pipeline-ci-cd.md`
-- `09-readme-documentacao-final.md`
-- `10-video-entrega.md`
+- `docs/descontinuado/prompts/`

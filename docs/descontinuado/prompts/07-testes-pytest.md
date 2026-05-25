@@ -37,3 +37,4 @@ Caso esperado para documentacao critica: a IA pode gerar poucos cenarios, deixan
 ## Ajustes aplicados
 
 Preencher durante a execucao.
+
