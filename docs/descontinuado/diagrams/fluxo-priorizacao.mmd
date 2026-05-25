@@ -1,0 +1,15 @@
+flowchart TD
+    Start[Receber compromissos cadastrados] --> Validate[Validar dados de entrada]
+    Validate --> FilterDone{Status concluido?}
+    FilterDone -->|Sim| LowWeight[Aplicar menor peso ou mover para o final]
+    FilterDone -->|Nao| PriorityWeight[Calcular peso da prioridade]
+
+    LowWeight --> TypeWeight[Calcular peso do tipo]
+    PriorityWeight --> DeadlineWeight[Calcular peso por proximidade do prazo]
+    DeadlineWeight --> TypeWeight
+    TypeWeight --> StatusWeight[Calcular peso do status]
+    StatusWeight --> Score[Somar pontuacao final]
+    Score --> Reason[Gerar motivo da priorizacao]
+    Reason --> Sort[Ordenar por maior pontuacao]
+    Sort --> Response[Retornar plano de prioridades em JSON]
+

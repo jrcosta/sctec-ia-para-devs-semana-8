@@ -1,0 +1,10 @@
+flowchart LR
+    User[Usuario] --> Page[Next.js App Router Page]
+    Page --> Components[React Client Components]
+    Components --> ApiClient[src/services/api.js]
+    ApiClient --> Routes[Next.js Route Handlers /api]
+    Routes --> Domain[Servico de dominio JS]
+    Domain --> Priority[Motor de priorizacao]
+    Domain --> Store[(Memoria do runtime)]
+    Routes --> Json[Respostas JSON]
+    Json --> Components

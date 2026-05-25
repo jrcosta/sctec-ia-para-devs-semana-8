@@ -1,0 +1,19 @@
+flowchart LR
+    User[Usuario] --> UI[Frontend Next.js]
+
+    UI -->|HTTP JSON| API[Backend FastAPI]
+    API --> Schemas[Pydantic Schemas]
+    API --> Routes[Rotas da API]
+    Routes --> Services[Servicos de Dominio]
+    Services --> Priority[Motor de Priorizacao]
+    Services --> Repository[Repositorio de Compromissos]
+    Repository --> Storage[(Memoria / JSON simples)]
+
+    API --> OpenAPI[Swagger OpenAPI /docs]
+    Tests[Pytest] --> API
+    CI[GitHub Actions] --> Tests
+    CI --> Build[Build Next.js]
+
+    Prompts[docs/prompts] --> Docs[Documentacao do Projeto]
+    Diagrams[docs/diagrams] --> Docs
+
