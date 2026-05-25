@@ -70,3 +70,4 @@ Os seguintes ajustes foram feitos em relação ao prompt inicial:
 - validação de texto com remoção de espaços em branco;
 - repositório em memória com `clear()` para testes;
 - testes automatizados para fluxo principal.
+

@@ -1,274 +1,85 @@
 # AgendaEdu
 
-AgendaEdu e uma aplicacao web de agenda escolar criada para o projeto avaliativo do modulo IA para Desenvolvedores. O objetivo e ajudar estudantes a registrar compromissos escolares, consultar pendencias e gerar um plano de prioridades com base em prazo, prioridade, tipo de compromisso e status.
+AgendaEdu e uma aplicacao web serverless para cadastro, consulta, filtros e priorizacao de compromissos escolares. A stack atual usa Next.js no frontend e no backend, com API implementada por Route Handlers em `src/app/api`.
 
-## Status
-
-Projeto em fase de planejamento e estruturacao inicial.
-
-Artefatos ja planejados:
-
-- plano de execucao em `docs/plano-execucao-agendaedu.md`;
-- issues sugeridas para GitHub Project em `docs/github-issues-agendaedu.md`;
-- prompts organizados em `docs/prompts/`;
-- diagramas Mermaid em `docs/diagrams/`;
-- decisoes iniciais em `docs/questionario-decisoes-iniciais.md`.
-
-## Problema Resolvido
-
-Estudantes lidam com provas, trabalhos, tarefas, leituras e apresentacoes em diferentes disciplinas. Sem uma organizacao clara, compromissos importantes podem ser esquecidos ou tratados tarde demais. O AgendaEdu centraliza esses compromissos e ordena as atividades por urgencia e importancia.
-
-## Funcionalidades Previstas
-
-- Cadastrar compromissos escolares.
-- Listar e filtrar compromissos.
-- Gerar plano de prioridades.
-- Exibir resultados no frontend.
-- Retornar respostas JSON estruturadas pela API.
-
-## Stack Tecnica
+## Stack
 
 | Camada | Tecnologia |
 | --- | --- |
-| Frontend | React + Vite |
-| Backend | Python + FastAPI |
-| Testes | Pytest |
-| CI/CD | GitHub Actions |
-| Armazenamento | Memoria ou arquivo JSON simples |
-| Diagramas | Mermaid |
-| IA | Codex da OpenAI |
-
-## Modelo de Dados
-
-Um compromisso escolar deve conter:
-
-| Campo | Descricao |
-| --- | --- |
-| `titulo` | Nome do compromisso |
-| `descricao` | Detalhes complementares |
-| `disciplina` | Disciplina relacionada |
-| `tipo` | `prova`, `trabalho`, `tarefa`, `leitura` ou `apresentacao` |
-| `data` | Prazo ou data do compromisso |
-| `prioridade` | `baixa`, `media` ou `alta` |
-| `status` | `pendente`, `em andamento` ou `concluido` |
-
-## Regra de Priorizacao
-
-O plano de prioridades deve considerar:
-
-- prioridade informada pelo usuario;
-- proximidade do prazo;
-- tipo do compromisso;
-- status atual.
-
-Compromissos com prioridade alta, prazo proximo e status pendente devem aparecer antes de itens menos urgentes ou ja concluidos.
+| Aplicacao web | Next.js App Router |
+| Backend serverless | Next.js Route Handlers |
+| UI | React |
+| Armazenamento inicial | Memoria do runtime serverless |
+| Build | `next build` |
+| Documentacao | Markdown e Mermaid |
 
 ## Arquitetura
 
-Diagramas Mermaid:
-
-- `docs/diagrams/arquitetura-agendaedu.mmd`
-- `docs/diagrams/fluxo-priorizacao.mmd`
-
-Visao resumida:
-
 ```text
-Usuario -> Frontend React + Vite -> Backend FastAPI -> Servico de compromissos
-                                               |-> Motor de priorizacao
-                                               |-> Memoria ou JSON
+Usuario -> Next.js Page -> React Client Components -> /api/*
+                                      |              -> Route Handlers
+                                      |              -> Servico de dominio
+                                      |              -> Store em memoria
 ```
 
-## Uso de IA
+Documentos principais:
 
-A IA sera usada de forma documentada nas seguintes etapas:
+- `docs/arquitetura-serverless-nextjs.md`
+- `docs/especificacao-serverless-nextjs.md`
+- `docs/plano-execucao-serverless-nextjs.md`
+- `docs/migracao-serverless-nextjs.md`
+- `docs/diagrams/serverless-nextjs.mmd`
+- `docs/diagrams/fluxo-priorizacao-serverless.mmd`
 
-- especificacao funcional;
-- arquitetura;
-- geracao de codigo;
-- refinamento;
-- refatoracao;
-- testes;
-- documentacao;
-- prompts;
-- CI/CD.
-
-Ferramenta definida: Codex da OpenAI.
-
-## Padroes de Prompting
-
-Padroes definidos no projeto:
-
-- zero-shot prompting;
-- few-shot prompting;
-- contexto + tarefa.
-
-Os prompts ficam em `docs/prompts/` e devem registrar contexto, tarefa, restricoes, saida obtida, avaliacao critica e ajustes aplicados quando necessario.
+A documentacao anterior foi arquivada em `docs/descontinuado/`.
 
 ## Execucao Local
 
-Para subir backend e frontend juntos no Windows:
-
 ```powershell
-.\scripts\dev.ps1
-```
-
-Para Linux/macOS:
-
-```bash
-chmod +x scripts/dev.sh
-./scripts/dev.sh
-```
-
-Depois acesse:
-
-```text
-http://127.0.0.1:5173
-```
-
-Os logs locais ficam em `.logs/` caso algum processo encerre.
-
-As instrucoes manuais abaixo podem ser usadas caso prefira rodar cada parte separadamente.
-
-Backend previsto:
-
-```bash
-cd backend
-python -m venv .venv
-python -m pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
-
-Frontend previsto:
-
-```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Testes previstos:
+Acesse:
+
+```text
+http://127.0.0.1:3000
+```
+
+API de saude:
+
+```text
+http://127.0.0.1:3000/api/health
+```
+
+Tambem e possivel usar:
+
+```powershell
+.\scripts\dev.ps1
+```
+
+ou:
 
 ```bash
-cd backend
-python -m pytest
+./scripts/dev.sh
 ```
 
-## Exemplos de Uso
+## Endpoints
 
-### Cenario 1: cadastrar e listar compromisso
+| Metodo | Rota | Uso |
+| --- | --- | --- |
+| `GET` | `/api/health` | Verificar saude da aplicacao |
+| `POST` | `/api/appointments` | Criar compromisso |
+| `GET` | `/api/appointments` | Listar e filtrar compromissos |
+| `GET` | `/api/appointments/priority-plan` | Gerar plano de prioridades |
+| `GET` | `/api/appointments/{id}` | Consultar compromisso por ID |
 
-Entrada prevista:
+## Validacao
 
-```json
-{
-  "titulo": "Prova de matematica",
-  "descricao": "Capitulos 1 a 4",
-  "disciplina": "Matematica",
-  "tipo": "prova",
-  "data": "2026-05-28",
-  "prioridade": "alta",
-  "status": "pendente"
-}
+```powershell
+cd frontend
+npm run build
 ```
 
-Saida esperada:
-
-```json
-{
-  "id": "1",
-  "titulo": "Prova de matematica",
-  "disciplina": "Matematica",
-  "tipo": "prova",
-  "data": "2026-05-28",
-  "prioridade": "alta",
-  "status": "pendente"
-}
-```
-
-### Cenario 2: gerar plano de prioridades
-
-Entrada prevista:
-
-```json
-[
-  {
-    "titulo": "Prova de matematica",
-    "tipo": "prova",
-    "data": "2026-05-28",
-    "prioridade": "alta",
-    "status": "pendente"
-  },
-  {
-    "titulo": "Leitura de historia",
-    "tipo": "leitura",
-    "data": "2026-06-10",
-    "prioridade": "baixa",
-    "status": "pendente"
-  }
-]
-```
-
-Saida esperada:
-
-```json
-{
-  "prioridades": [
-    {
-      "titulo": "Prova de matematica",
-      "motivo": "prioridade alta, prazo proximo e status pendente"
-    },
-    {
-      "titulo": "Leitura de historia",
-      "motivo": "prioridade baixa e prazo menos urgente"
-    }
-  ]
-}
-```
-
-## Analise Critica de IA
-
-Caso previsto para documentacao: a IA pode gerar uma suite de testes insuficiente, cobrindo apenas cenarios felizes e deixando lacunas em filtros combinados, status `concluido` e ordenacao por prazo. A correcao esperada e revisar criticamente os testes gerados, adicionar cenarios relevantes e registrar o antes/depois em `docs/prompts/07-testes-pytest.md`.
-
-## CI/CD
-
-O pipeline previsto com GitHub Actions deve executar:
-
-- lint do backend;
-- testes Pytest;
-- build do frontend.
-
-O prompt de criacao do pipeline esta em `docs/prompts/08-pipeline-ci-cd.md`.
-
-## GitHub Project
-
-O board deve usar as colunas:
-
-- Backlog;
-- A Fazer;
-- Em Andamento;
-- Bloqueado;
-- Em Revisao;
-- Concluido.
-
-As issues sugeridas estao em `docs/github-issues-agendaedu.md`.
-
-## Melhorias Futuras
-
-- Testes de frontend.
-- Persistencia em banco de dados.
-- Autenticacao de usuarios.
-- Exportacao de compromissos.
-- Notificacoes de prazo.
-
-## Video de Demonstracao
-
-Link do YouTube nao listado: pendente.
-
-## Documentacao Relacionada
-
-- `docs/descricao-projeto-avaliativo.md`
-- `docs/questionario-decisoes-iniciais.md`
-- `docs/plano-execucao-agendaedu.md`
-- `docs/github-issues-agendaedu.md`
-- `docs/prompts/00-indice-prompts.md`
-- `CONTRIBUTING.md`
+Observacao: o armazenamento atual e em memoria para manter o escopo serverless simples e demonstravel. Em producao, a evolucao recomendada e trocar o store por banco serverless, como Neon Postgres.

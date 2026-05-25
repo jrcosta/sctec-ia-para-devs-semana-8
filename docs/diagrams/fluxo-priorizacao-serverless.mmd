@@ -1,0 +1,8 @@
+flowchart TD
+    Start[Receber compromisso ou filtros] --> Validate[Validar campos e enums]
+    Validate --> Store[Listar itens do store em memoria]
+    Store --> Filters[Aplicar filtros]
+    Filters --> Score[Somar pesos de prioridade tipo status e prazo]
+    Score --> Reason[Gerar motivo legivel]
+    Reason --> Sort[Ordenar por pontuacao data e titulo]
+    Sort --> Response[Retornar JSON em /api/appointments/priority-plan]

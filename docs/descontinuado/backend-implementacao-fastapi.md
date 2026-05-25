@@ -69,3 +69,4 @@ curl "http://127.0.0.1:8000/appointments/priority-plan"
 - A API ainda não grava em JSON persistente.
 - A cobertura de testes cobre os fluxos principais, mas ainda falta testar combinações mais amplas de filtros e casos de datas limite.
 - O frontend ainda precisa consumir esses endpoints para fechar a experiência completa.
+
