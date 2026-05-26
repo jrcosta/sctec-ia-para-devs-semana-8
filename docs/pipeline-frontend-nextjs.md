@@ -1,5 +1,9 @@
 # Pipeline Frontend Next.js
 
+## Issue
+
+Issue vinculada: `#27 Configurar pipeline CI do frontend Next.js`
+
 ## Objetivo
 
 Criar um pipeline de CI para validar a aplicacao Next.js do AgendaEdu.
