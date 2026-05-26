@@ -5,3 +5,7 @@ export function getAppointmentStore() {
 
   return globalThis.__agendaEduAppointments;
 }
+
+export function clearAppointmentStore() {
+  getAppointmentStore().length = 0;
+}
