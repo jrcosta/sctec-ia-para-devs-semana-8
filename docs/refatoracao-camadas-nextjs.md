@@ -1,5 +1,9 @@
 # Refatoracao de camadas Next.js
 
+## Issue
+
+Issue vinculada: `#23 Refatorar camadas da aplicacao Next.js`
+
 ## Objetivo
 
 Separar responsabilidades da aplicacao AgendaEdu em camadas claras dentro do projeto Next.js.
