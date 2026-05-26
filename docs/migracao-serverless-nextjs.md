@@ -2,7 +2,7 @@
 
 ## Mudanca realizada
 
-O backend principal da aplicacao passou a ser implementado por Route Handlers do Next.js. A pasta `backend/` permanece no repositorio apenas como legado de implementacao anterior, enquanto a aplicacao ativa esta em `frontend/`.
+O backend principal da aplicacao passou a ser implementado por Route Handlers do Next.js. A pasta `backend/` foi removida da area ativa do repositorio para evitar manutencao de codigo legado sem uso.
 
 ## Arquivos principais criados
 
@@ -14,7 +14,7 @@ O backend principal da aplicacao passou a ser implementado por Route Handlers do
 
 ## Arquivos de documentacao antiga
 
-Os documentos anteriores foram copiados para:
+Os documentos anteriores foram preservados para consulta em:
 
 ```text
 docs/descontinuado/
@@ -22,7 +22,7 @@ docs/descontinuado/
 
 ## Justificativa
 
-A nova arquitetura reduz a necessidade de dois servidores locais, remove CORS no fluxo principal e aproxima o projeto de uma entrega serverless.
+A nova arquitetura reduz a necessidade de dois servidores locais, remove CORS no fluxo principal e aproxima o projeto de uma entrega serverless. A remocao do backend legado reduz ambiguidade sobre qual stack deve ser executada.
 
 ## Limitacao conhecida
 
