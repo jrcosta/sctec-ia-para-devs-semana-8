@@ -1,1 +1,0 @@
-"""AgendaEdu backend package."""

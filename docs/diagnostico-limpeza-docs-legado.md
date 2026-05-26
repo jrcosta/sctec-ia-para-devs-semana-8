@@ -19,3 +19,7 @@ Tambem foram ajustadas referencias textuais nos documentos vigentes para descrev
 ## Observacao
 
 Os documentos antigos seguem preservados em `docs/descontinuado/`, que e a pasta historica solicitada para conteudo descontinuado.
+
+## Limpeza complementar
+
+O backend Python legado foi removido da area ativa do repositorio apos a migracao para Next.js serverless. A aplicacao vigente roda em `frontend/` com Route Handlers em `frontend/src/app/api`.
