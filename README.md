@@ -1,85 +1,147 @@
 # AgendaEdu
 
-AgendaEdu e uma aplicacao web serverless para cadastro, consulta, filtros e priorizacao de compromissos escolares. A stack atual usa Next.js no frontend e no backend, com API implementada por Route Handlers em `src/app/api`.
+AgendaEdu e uma aplicacao web serverless para cadastro, consulta, filtros e priorizacao de compromissos escolares.
 
-## Stack
+A stack ativa e fullstack Next.js: a interface roda no App Router e o backend fica nos Route Handlers em `frontend/src/app/api`. Nao ha mais servidor Python separado no fluxo vigente.
 
-| Camada | Tecnologia |
-| --- | --- |
-| Aplicacao web | Next.js App Router |
-| Backend serverless | Next.js Route Handlers |
-| UI | React |
-| Armazenamento inicial | Memoria do runtime serverless |
-| Build | `next build` |
-| Documentacao | Markdown e Mermaid |
-
-## Arquitetura
+## Arquitetura Serverless Next.js
 
 ```text
-Usuario -> Next.js Page -> React Client Components -> /api/*
-                                      |              -> Route Handlers
-                                      |              -> Servico de dominio
-                                      |              -> Store em memoria
+Usuario
+  -> Next.js App Router
+  -> React UI
+  -> cliente HTTP relativo em /api
+  -> Route Handlers do Next.js
+  -> dominio em src/lib/agendaedu
+  -> store em memoria do runtime
 ```
 
-Documentos principais:
+| Camada | Caminho | Responsabilidade |
+| --- | --- | --- |
+| Pagina principal | `frontend/src/app/page.jsx` | Entrada da aplicacao Next.js |
+| UI | `frontend/src/ui` | Formulario, filtros, lista e plano de prioridades |
+| Cliente HTTP | `frontend/src/lib/http/agendaedu-api.js` | Chamadas relativas para `/api` |
+| Route Handlers | `frontend/src/app/api` | Endpoints serverless do backend |
+| Dominio | `frontend/src/lib/agendaedu` | Validacao, filtros, priorizacao e store |
+| Testes | `frontend/src/app/api/agendaedu-route-handlers.test.js` | Cobertura dos endpoints principais |
+
+Documentos de arquitetura:
 
 - `docs/arquitetura-serverless-nextjs.md`
+- `docs/backend-serverless-nextjs.md`
 - `docs/especificacao-serverless-nextjs.md`
 - `docs/plano-execucao-serverless-nextjs.md`
 - `docs/migracao-serverless-nextjs.md`
 - `docs/diagrams/serverless-nextjs.mmd`
 - `docs/diagrams/fluxo-priorizacao-serverless.mmd`
 
-A documentacao anterior foi arquivada em `docs/descontinuado/`.
+A documentacao da stack anterior foi preservada em `docs/descontinuado/`.
 
-## Execucao Local
+## Comandos Locais
+
+Instalar dependencias:
 
 ```powershell
 cd frontend
 npm install
+```
+
+Executar em desenvolvimento:
+
+```powershell
 npm run dev
 ```
 
-Acesse:
+Acessar a aplicacao:
 
 ```text
 http://127.0.0.1:3000
 ```
 
-API de saude:
+Executar testes automatizados:
 
-```text
-http://127.0.0.1:3000/api/health
+```powershell
+npm test
 ```
 
-Tambem e possivel usar:
+Gerar build de producao:
+
+```powershell
+npm run build
+```
+
+Alternativas por script:
 
 ```powershell
 .\scripts\dev.ps1
 ```
 
-ou:
-
 ```bash
 ./scripts/dev.sh
 ```
 
-## Endpoints
+## Endpoints `/api`
 
-| Metodo | Rota | Uso |
-| --- | --- | --- |
-| `GET` | `/api/health` | Verificar saude da aplicacao |
-| `POST` | `/api/appointments` | Criar compromisso |
-| `GET` | `/api/appointments` | Listar e filtrar compromissos |
-| `GET` | `/api/appointments/priority-plan` | Gerar plano de prioridades |
-| `GET` | `/api/appointments/{id}` | Consultar compromisso por ID |
+Base local:
 
-## Validacao
-
-```powershell
-cd frontend
-npm run build
+```text
+http://127.0.0.1:3000/api
 ```
 
-Observacao: o armazenamento atual e em memoria para manter o escopo serverless simples e demonstravel. Em producao, a evolucao recomendada e trocar o store por banco serverless, como Neon Postgres.
+| Metodo | Rota | Descricao |
+| --- | --- | --- |
+| `GET` | `/api/health` | Retorna status da API serverless |
+| `GET` | `/api/appointments` | Lista compromissos, com filtros opcionais |
+| `POST` | `/api/appointments` | Cadastra um compromisso |
+| `GET` | `/api/appointments/{id}` | Consulta um compromisso por ID |
+| `GET` | `/api/appointments/priority-plan` | Retorna o plano de prioridades |
+
+Filtros aceitos em listagem e plano de prioridades:
+
+| Parametro | Exemplo |
+| --- | --- |
+| `disciplina` | `Matematica` |
+| `tipo` | `prova` |
+| `prioridade` | `alta` |
+| `status` | `pendente` |
+| `date_from` | `2026-05-01` |
+| `date_to` | `2026-06-30` |
+
+Exemplo:
+
+```text
+GET /api/appointments?disciplina=Matematica&prioridade=alta
+```
+
+Payload para cadastro:
+
+```json
+{
+  "titulo": "Prova de matematica",
+  "descricao": "Capitulos 1 a 4",
+  "disciplina": "Matematica",
+  "tipo": "prova",
+  "data": "2026-05-28",
+  "prioridade": "alta",
+  "status": "pendente"
+}
+```
+
+Valores aceitos:
+
+- `tipo`: `prova`, `trabalho`, `tarefa`, `leitura`, `apresentacao`
+- `prioridade`: `baixa`, `media`, `alta`
+- `status`: `pendente`, `em andamento`, `concluido`
+
+## Limitacao do Store em Memoria
+
+O armazenamento atual usa memoria do runtime (`globalThis`) para manter o projeto simples e demonstravel em ambiente local/serverless.
+
+Essa escolha tem limitacoes importantes:
+
+- os dados podem ser perdidos ao reiniciar o servidor local;
+- os dados podem ser perdidos em novo deploy, novo build ou reciclagem de runtime;
+- em ambiente serverless com multiplas instancias, uma instancia pode nao enxergar dados gravados em outra;
+- nao ha garantia de durabilidade, backup ou concorrencia.
+
+Para producao, a evolucao recomendada e substituir o store em memoria por um banco serverless, como Neon Postgres, mantendo os Route Handlers como camada HTTP.
