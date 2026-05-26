@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { getAppointments, createAppointment, getPriorityPlan } from "./services/api";
+import { getAppointments, createAppointment, getPriorityPlan } from "@/lib/http/agendaedu-api";
 import AppointmentForm from "./components/AppointmentForm.jsx";
 import AppointmentList from "./components/AppointmentList.jsx";
 import Filters from "./components/Filters.jsx";
 import PriorityPlan from "./components/PriorityPlan.jsx";
 
-export default function App() {
+export default function AgendaEduApp() {
   const [appointments, setAppointments] = useState([]);
   const [priorityPlan, setPriorityPlan] = useState([]);
   const [filters, setFilters] = useState({});

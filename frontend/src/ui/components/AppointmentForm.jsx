@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { APPOINTMENT_TYPES, PRIORITIES, STATUSES } from "../constants";
+import { APPOINTMENT_TYPES, PRIORITIES, STATUSES } from "@/constants";
 
 export default function AppointmentForm({ onSubmit }) {
   const [formData, setFormData] = useState({

@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { buildPriorityPlan, readFilters } from "@/lib/agendaedu/appointments";
+import { buildPriorityPlan } from "@/lib/agendaedu/service";
+import { readAppointmentFilters } from "@/lib/http/search-params";
 
 export function GET(request) {
-  const filters = readFilters(new URL(request.url).searchParams);
+  const filters = readAppointmentFilters(new URL(request.url).searchParams);
 
   return NextResponse.json({
     prioridades: buildPriorityPlan(filters),

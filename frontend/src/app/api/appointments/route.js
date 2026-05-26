@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { createAppointment, listAppointments, readFilters } from "@/lib/agendaedu/appointments";
+import { createAppointment, listAppointments } from "@/lib/agendaedu/service";
+import { readAppointmentFilters } from "@/lib/http/search-params";
 
 export function GET(request) {
-  const filters = readFilters(new URL(request.url).searchParams);
+  const filters = readAppointmentFilters(new URL(request.url).searchParams);
   const items = listAppointments(filters);
 
   return NextResponse.json({
