@@ -1,3 +1,11 @@
 # Prompt Vigente: README
 
-Atualize o README para descrever a arquitetura serverless Next.js, comandos locais, endpoints `/api` e limitacao do store em memoria.
+Atualize o README para descrever a aplicacao atual do AgendaEdu:
+
+- arquitetura serverless Next.js;
+- comandos locais em `frontend/`;
+- endpoints `/api`;
+- filtros aceitos;
+- payload de cadastro;
+- limitacao do store em memoria;
+- referencia aos docs principais e aos diagramas.

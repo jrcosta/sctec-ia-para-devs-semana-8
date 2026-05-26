@@ -61,3 +61,18 @@ Branch sugerida: `docs/entrega-final`
 Objetivo:
 
 Consolidar README, docs, diagramas, prompts e evidencias da migracao.
+
+## 5. Atualizar prompts para a aplicacao atual
+
+Branch sugerida: `docs/ajustar-prompts-app-atual`
+
+Objetivo:
+
+Reescrever os prompts ativos para que, quando executados em sequencia, descrevam e recriem a aplicacao AgendaEdu na arquitetura atual.
+
+Escopo:
+
+- Atualizar os prompts serverless para a stack vigente.
+- Remover dependencias textuais de backend Python ou fluxo antigo.
+- Tornar os prompts suficientes para gerar a aplicacao atual sem contexto externo.
+- Alinhar indices, README e documentacao de apoio.
