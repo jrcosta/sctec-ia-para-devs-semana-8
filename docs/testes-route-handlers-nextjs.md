@@ -1,5 +1,9 @@
 # Testes dos Route Handlers Next.js
 
+## Issue
+
+Issue vinculada: `#25 Adicionar testes dos Route Handlers do AgendaEdu`
+
 ## Objetivo
 
 Cobrir os endpoints serverless do AgendaEdu implementados em `frontend/src/app/api`.
