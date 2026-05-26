@@ -1,6 +1,6 @@
 "use client";
 
-import { APPOINTMENT_TYPES, PRIORITIES, STATUSES } from "../constants";
+import { APPOINTMENT_TYPES, PRIORITIES, STATUSES } from "@/constants";
 
 export default function Filters({ filters, onFilterChange }) {
   const handleChange = (e) => {

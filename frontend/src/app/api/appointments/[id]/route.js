@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAppointmentById } from "@/lib/agendaedu/appointments";
+import { getAppointmentById } from "@/lib/agendaedu/service";
 
 export async function GET(_request, { params }) {
   const { id } = await params;

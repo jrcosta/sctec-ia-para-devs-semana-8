@@ -1,8 +1,9 @@
 async function handleResponse(response) {
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.detail || "Erro na requisição à API.");
+    throw new Error(errorData.detail || "Erro na requisicao a API.");
   }
+
   return response.json();
 }
 
@@ -32,6 +33,7 @@ export async function createAppointment(appointment) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(appointment),
   });
+
   return handleResponse(response);
 }
 
